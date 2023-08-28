@@ -9,6 +9,10 @@ namespace temp.iaw
 		public bool ShouldMove = false;
 		public bool IsMoving => CanMove && ShouldMove;
 
+		[field: Header("Inverse Control")]
+		[field: SerializeField] public bool ApplyInverseMovement { get; private set; } = false;
+		private Transform worldTransform;
+
 		[field: Header("Parameters")]
 		[field: SerializeField] public float Speed { get; private set; } = 1f;
 		[field: SerializeField] public float MinSpeed { get; private set; } = 0f;
@@ -42,6 +46,19 @@ namespace temp.iaw
 		private float targetPitch, targetRoll;
 
 		private Coroutine resetPitchCoroutine, resetRollCoroutine;
+
+		private void Start()
+		{
+			if(ApplyInverseMovement) {
+				GameObject worldTransformObj = GameObject.FindWithTag("WorldTransform");
+				if(worldTransformObj != null) {
+					worldTransform = worldTransformObj.transform;
+				}
+				else {
+					Debug.LogError("Attempting to apply inverse motion with flight controller, but no world transform found.");
+				}
+			}
+		}
 
 		private void Update()
 		{
@@ -78,6 +95,8 @@ namespace temp.iaw
 
 			rollInput = Input.GetAxis(rollAxis);
 			if(rollInput != 0f) {
+				CancelResetRoll();
+
 				rollDiff = rollInput * Time.deltaTime * RollRate;
 				targetRoll = Roll + rollDiff;
 				if(targetRoll > MaxRoll) { rollDiff = MaxRoll - Roll; }
@@ -100,7 +119,12 @@ namespace temp.iaw
 				Speed = Mathf.Clamp(Speed + speedInput * Time.deltaTime * Acceleration, MinSpeed, MaxSpeed);
 			}
 
-			transform.Translate(Speed * Time.deltaTime * Vector3.forward, Space.Self);
+			if(ApplyInverseMovement) {
+				worldTransform.Translate(-Speed * Time.deltaTime * transform.forward, Space.World);
+			}
+			else {
+				transform.Translate(Speed * Time.deltaTime * transform.forward, Space.World);
+			}
 		}
 
 		private void ResetPitch() => resetPitchCoroutine ??= StartCoroutine(ResetPitch_Async());

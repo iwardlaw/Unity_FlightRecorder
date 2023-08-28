@@ -599,6 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CanMove>k__BackingField: 1
   ShouldMove: 1
+  <ApplyInverseMovement>k__BackingField: 1
   <Speed>k__BackingField: 10
   <MinSpeed>k__BackingField: 0
   <MaxSpeed>k__BackingField: 50
@@ -1127,7 +1128,7 @@ GameObject:
   - component: {fileID: 1582870565}
   m_Layer: 0
   m_Name: World Transform
-  m_TagString: Untagged
+  m_TagString: WorldTransform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1177,7 +1178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597a3fc256c38334c8a50b18674000c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldTransform: {fileID: 1582870565}
   CopyCount: 50
   MaxDistance: 500
   MaxHeight: 100
