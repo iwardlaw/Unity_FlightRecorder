@@ -555,6 +555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 683923783}
   - component: {fileID: 683923784}
+  - component: {fileID: 683923785}
   m_Layer: 0
   m_Name: Aircraft
   m_TagString: Untagged
@@ -616,6 +617,27 @@ MonoBehaviour:
   speedAxis: Speed
   resetPitchKey: 114
   resetRollKey: 102
+--- !u!95 &683923785
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683923782}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c36bc57fc5845d4ba2eb533cdb5ad72, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,6 +942,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856344829}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &956248265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956248267}
+  - component: {fileID: 956248266}
+  m_Layer: 0
+  m_Name: FlightRecorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &956248266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956248265}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de0229e82cec5741973874cd3e21e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aircraft: {fileID: 683923782}
+  aircraftClip: {fileID: 7400000, guid: f52a20c51dcb8a244aeda5ff6c4709a5, type: 2}
+  worldTransformClip: {fileID: 7400000, guid: dd85431b1a7be6e4888641cb5f4a9a54, type: 2}
+--- !u!4 &956248267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956248265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1582870565}
+  - component: {fileID: 1582870566}
   m_Layer: 0
   m_Name: World Transform
   m_TagString: WorldTransform
@@ -1149,6 +1219,27 @@ Transform:
   - {fileID: 172787354}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1582870566
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582870564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b223f4416a359a4a85dfb3b12f01f17, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1617231259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,3 +1409,4 @@ SceneRoots:
   - {fileID: 683923783}
   - {fileID: 705507995}
   - {fileID: 1617231261}
+  - {fileID: 956248267}
